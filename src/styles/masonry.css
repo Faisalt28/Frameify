@@ -1,0 +1,513 @@
+/* ==========================================================================
+   NAVBAR & HEADER STYLING
+   ========================================================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--bg-glass);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.85rem 0;
+  transition: all var(--transition-normal);
+}
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  user-select: none;
+}
+
+.brand-icon-wrapper {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--accent-primary), #b8001b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 4px 14px var(--accent-glow);
+}
+
+.search-container {
+  flex: 1;
+  max-width: 650px;
+  position: relative;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: 0.55rem 1.15rem;
+  transition: all var(--transition-fast);
+}
+
+.search-input-wrapper:focus-within {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+  background: var(--bg-secondary);
+}
+
+.search-icon {
+  color: var(--text-muted);
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-clear-btn {
+  color: var(--text-muted);
+  padding: 4px;
+  border-radius: 50%;
+}
+
+.search-clear-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-btn {
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 600;
+  gap: 0.5rem;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.nav-btn:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+}
+
+.nav-btn.active {
+  background: var(--accent-primary);
+  color: #fff;
+  border-color: var(--accent-primary);
+  box-shadow: 0 4px 14px var(--accent-glow);
+}
+
+.nav-badge {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+}
+
+/* ==========================================================================
+   CATEGORY PILLS BAR
+   ========================================================================== */
+.categories-wrapper {
+  padding: 1.25rem 0 0.5rem;
+}
+
+.categories-scroll {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: none;
+}
+.categories-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.category-pill {
+  white-space: nowrap;
+  padding: 0.55rem 1.15rem;
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+}
+
+.category-pill:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  border-color: var(--border-hover);
+}
+
+.category-pill.active {
+  background: #fff;
+  color: #0a0c10;
+  font-weight: 700;
+  border-color: #fff;
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
+  transform: scale(1.02);
+}
+
+/* ==========================================================================
+   NOTICE & NOTIFICATION BANNER
+   ========================================================================== */
+.notice-banner {
+  margin: 1rem 0;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-md);
+  background: rgba(230, 0, 35, 0.08);
+  border: 1px solid rgba(230, 0, 35, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: #ff8090;
+  font-size: 0.9rem;
+}
+
+.notice-btn {
+  background: var(--accent-primary);
+  color: #fff;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.notice-btn:hover {
+  background: var(--accent-primary-hover);
+}
+
+/* ==========================================================================
+   PINTEREST MASONRY GRID
+   ========================================================================== */
+.masonry-grid {
+  column-count: 1;
+  column-gap: 1.25rem;
+  padding: 1.5rem 0 3rem;
+  width: 100%;
+}
+
+@media (min-width: 580px) {
+  .masonry-grid { column-count: 2; }
+}
+
+@media (min-width: 960px) {
+  .masonry-grid { column-count: 3; }
+}
+
+@media (min-width: 1320px) {
+  .masonry-grid { column-count: 4; }
+}
+
+/* Pin Card */
+.pin-card {
+  break-inside: avoid;
+  margin-bottom: 1.25rem;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-card);
+  position: relative;
+  cursor: pointer;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+  border: 1px solid var(--border-color);
+  will-change: transform;
+}
+
+.pin-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.55), 0 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+.pin-img-wrapper {
+  position: relative;
+  width: 100%;
+  display: block;
+  background-color: var(--bg-card-hover);
+  overflow: hidden;
+}
+
+.pin-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+}
+
+.pin-card:hover .pin-img {
+  transform: scale(1.04);
+}
+
+/* Pin Overlay & Hover Actions */
+.pin-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 35%, rgba(0,0,0,0.7) 100%);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.9rem;
+  z-index: 2;
+}
+
+.pin-card:hover .pin-overlay {
+  opacity: 1;
+}
+
+.pin-top-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.pin-btn-action {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(24, 28, 38, 0.85);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  transition: all var(--transition-fast);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pin-btn-action:hover {
+  background: #fff;
+  color: #0a0c10;
+  transform: scale(1.1);
+}
+
+.pin-btn-action.is-saved {
+  background: var(--accent-primary);
+  color: #fff;
+}
+
+.pin-bottom-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.pin-author {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: 0;
+  color: #fff;
+  text-decoration: none;
+}
+
+.pin-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+}
+
+.pin-author-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.pin-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+
+/* ==========================================================================
+   LIGHTBOX MODAL
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+  background: var(--bg-card);
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius-lg);
+  max-width: 1100px;
+  width: 100%;
+  max-height: 92vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.modal-close-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+}
+.modal-close-btn:hover {
+  background: var(--bg-card-hover);
+  color: #fff;
+}
+
+.modal-image-wrapper {
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  min-height: 350px;
+  max-height: 65vh;
+}
+
+.modal-img {
+  max-width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+}
+
+.modal-footer {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+}
+
+.modal-download-btn {
+  padding: 0.65rem 1.25rem;
+  background: var(--accent-primary);
+  color: #fff;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.9rem;
+  gap: 0.5rem;
+  text-decoration: none;
+  box-shadow: 0 4px 14px var(--accent-glow);
+}
+.modal-download-btn:hover {
+  background: var(--accent-primary-hover);
+}
+
+/* ==========================================================================
+   SKELETON & LOADERS
+   ========================================================================== */
+.skeleton-card {
+  break-inside: avoid;
+  margin-bottom: 1.25rem;
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.skeleton-shimmer {
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0 4rem;
+}
+
+.load-more-btn {
+  padding: 0.75rem 2rem;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.95rem;
+  gap: 0.6rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.load-more-btn:hover:not(:disabled) {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+}
+
+.load-more-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

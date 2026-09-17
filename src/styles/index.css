@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* LIGHT MODE (Pure White: #ffffff) */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 7%;
+
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 7%;
+
+    --primary: 350 100% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 15%;
+
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 350 100% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
+    --ring: 350 100% 45%;
+    --radius: 0.85rem;
+
+    /* Legacy & custom variables for components */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f3f4f6;
+    --bg-glass: rgba(255, 255, 255, 0.88);
+
+    --border-color: rgba(0, 0, 0, 0.08);
+    --border-hover: rgba(0, 0, 0, 0.18);
+
+    --accent-primary: #e60023;
+    --accent-primary-hover: #c4001e;
+    --accent-glow: rgba(230, 0, 35, 0.2);
+
+    --text-primary: #0a0a0a;
+    --text-secondary: #4b5563;
+    --text-muted: #6b7280;
+  }
+
+  /* DARK MODE (Deep Pitch Black: #000000) */
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 100%;
+
+    --primary: 350 100% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 350 100% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 350 100% 45%;
+
+    /* Legacy & custom variables for components */
+    --bg-primary: #000000;
+    --bg-secondary: #0a0a0c;
+    --bg-card: #111115;
+    --bg-card-hover: #18181f;
+    --bg-glass: rgba(0, 0, 0, 0.88);
+
+    --border-color: rgba(255, 255, 255, 0.12);
+    --border-hover: rgba(255, 255, 255, 0.25);
+
+    --accent-primary: #e60023;
+    --accent-primary-hover: #ff1a3d;
+    --accent-glow: rgba(230, 0, 35, 0.35);
+
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1aa;
+    --text-muted: #71717a;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ambient-gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 450px;
+  background: radial-gradient(circle at 50% -20%, rgba(230, 0, 35, 0.12), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-hover);
+  border-radius: 9999px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
