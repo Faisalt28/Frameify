@@ -177,9 +177,22 @@ export function ImageStreamHero({
     [right, left, card, p],
   );
 
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(typeof window !== "undefined" && window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const activeCards = isMobile ? Math.min(cards, 6) : cards;
+
   return (
     <div
-      className={cn("relative overflow-hidden", className)}
+      className={cn("relative overflow-hidden w-full h-full", className)}
       {...props}
       style={{ containerType: "inline-size", ...props.style }}
     >
@@ -198,14 +211,14 @@ export function ImageStreamHero({
           style={{ transformStyle: "preserve-3d" }}
         >
           {[right, left].map((name) =>
-            Array.from({ length: cards }, (_, i) => {
+            Array.from({ length: activeCards }, (_, i) => {
               // Both rails walk the same sequence, so the left side mirrors
               // the right at every depth.
               const img = images[i % Math.max(images.length, 1)];
               return (
                 <div
                   key={`${name}-${i}`}
-                  className={cn(card, "absolute overflow-hidden")}
+                  className={cn(card, "absolute overflow-hidden will-change-transform")}
                   style={{
                     left: "50%",
                     top: `${axis}%`,
@@ -217,8 +230,9 @@ export function ImageStreamHero({
                     animation: `${name} ${speed}s linear infinite`,
                     // Negative delay drops each card mid-flight, so the
                     // corridor is already full on the first frame.
-                    animationDelay: `${-(i * speed) / cards}s`,
+                    animationDelay: `${-(i * speed) / activeCards}s`,
                     backfaceVisibility: "hidden",
+                    transform: "translateZ(0)",
                   }}
                 >
                   {img ? (
@@ -227,7 +241,7 @@ export function ImageStreamHero({
                       alt={img.alt ?? ""}
                       loading="lazy"
                       decoding="async"
-                      className="h-full w-full object-cover"
+                      className="h-full w-full object-cover select-none pointer-events-none"
                       draggable={false}
                     />
                   ) : null}

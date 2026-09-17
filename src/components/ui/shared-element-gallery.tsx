@@ -77,7 +77,7 @@ export function GalleryGrid({
   return (
     <div
       className={cn(
-        "columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 2xl:columns-6 gap-4 w-full",
+        "columns-2 gap-2.5 sm:columns-2 sm:gap-4 md:columns-3 lg:columns-4 xl:columns-5 2xl:columns-6 w-full",
         className
       )}
     >
@@ -108,7 +108,7 @@ export function GalleryImage({
       whileHover="hover"
       whileTap="tap"
       className={cn(
-        "relative mb-4 break-inside-avoid cursor-zoom-in rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300",
+        "relative mb-2.5 sm:mb-4 break-inside-avoid cursor-zoom-in rounded-lg sm:rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300",
         className
       )}
       onClick={() => context.setSelectedImage({ id, src, alt })}
@@ -203,14 +203,14 @@ function GalleryModal() {
   return (
     <AnimatePresence>
       {selectedImage && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-6 md:p-8">
           {/* Frosted glass backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="absolute inset-0 bg-black/85 backdrop-blur-2xl"
+            transition={{ duration: 0.25 }}
+            className="absolute inset-0 bg-black/90 backdrop-blur-2xl"
             onClick={() => setSelectedImage(null)}
           />
 
@@ -219,56 +219,56 @@ function GalleryModal() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ delay: 0.1, duration: 0.2 }}
-            className="absolute top-5 right-5 sm:top-6 sm:right-6 z-50 flex items-center gap-2.5"
+            transition={{ delay: 0.08, duration: 0.2 }}
+            className="absolute top-3 right-3 sm:top-6 sm:right-6 z-50 flex items-center gap-2 sm:gap-2.5"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Share Button */}
             <button
               type="button"
               onClick={handleShare}
-              className="p-2.5 bg-white/10 text-white rounded-full backdrop-blur-md hover:bg-white/25 transition-all shadow-lg border border-white/10 flex items-center gap-1.5 cursor-pointer hover:scale-105 active:scale-95"
+              className="p-2 sm:p-2.5 min-w-[38px] min-h-[38px] sm:min-w-[42px] sm:min-h-[42px] bg-white/10 text-white rounded-full backdrop-blur-md hover:bg-white/25 active:bg-white/30 transition-all shadow-lg border border-white/10 flex items-center justify-center gap-1.5 cursor-pointer hover:scale-105 active:scale-95"
               title="Bagikan foto"
               aria-label="Share photo"
             >
-              {copied ? <Check className="w-5 h-5 text-emerald-400" /> : <Share2 className="w-5 h-5" />}
-              {copied && <span className="text-xs font-semibold pr-1 text-emerald-400">Tersalin!</span>}
+              {copied ? <Check className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400" /> : <Share2 className="w-4 h-4 sm:w-5 sm:h-5" />}
+              {copied && <span className="text-[11px] font-semibold pr-1 text-emerald-400">Tersalin!</span>}
             </button>
 
             {/* Download Button */}
             <button
               type="button"
               onClick={handleDownload}
-              className="p-2.5 bg-white/10 text-white rounded-full backdrop-blur-md hover:bg-white/25 transition-all shadow-lg border border-white/10 cursor-pointer hover:scale-105 active:scale-95"
+              className="p-2 sm:p-2.5 min-w-[38px] min-h-[38px] sm:min-w-[42px] sm:min-h-[42px] bg-white/10 text-white rounded-full backdrop-blur-md hover:bg-white/25 active:bg-white/30 transition-all shadow-lg border border-white/10 flex items-center justify-center cursor-pointer hover:scale-105 active:scale-95"
               title="Unduh resolusi tinggi"
               aria-label="Download image"
             >
-              <Download className="w-5 h-5" />
+              <Download className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
 
             {/* Close Button */}
             <button
               type="button"
               onClick={() => setSelectedImage(null)}
-              className="p-2.5 bg-white/10 text-white rounded-full backdrop-blur-md hover:bg-white/25 transition-all shadow-lg border border-white/10 cursor-pointer hover:scale-105 active:scale-95"
+              className="p-2 sm:p-2.5 min-w-[38px] min-h-[38px] sm:min-w-[42px] sm:min-h-[42px] bg-white/10 text-white rounded-full backdrop-blur-md hover:bg-white/25 active:bg-white/30 transition-all shadow-lg border border-white/10 flex items-center justify-center cursor-pointer hover:scale-105 active:scale-95"
               title="Tutup (Esc)"
               aria-label="Close gallery"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </motion.div>
 
           {/* Container Gambar Modal dengan Lensa Zoom Lup (Magnifier Lens) */}
           <div
-            className="relative z-10 max-w-[92vw] max-h-[84vh] flex items-center justify-center select-none"
+            className="relative z-10 max-w-[94vw] max-h-[76vh] sm:max-h-[84vh] flex items-center justify-center select-none"
             onClick={(e) => e.stopPropagation()}
           >
-            <Lens zoomFactor={2.4} lensSize={180}>
+            <Lens zoomFactor={2.4}>
               <motion.img
                 layoutId={`image-${selectedImage.id}`}
                 src={selectedImage.src}
                 alt={selectedImage.alt || "Selected gallery image"}
-                className="w-auto h-auto max-w-[90vw] max-h-[80vh] rounded-2xl shadow-2xl object-contain pointer-events-auto"
+                className="w-auto h-auto max-w-[92vw] max-h-[72vh] sm:max-h-[80vh] rounded-xl sm:rounded-2xl shadow-2xl object-contain pointer-events-auto"
                 draggable={false}
                 transition={spring}
               />
