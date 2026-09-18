@@ -71,11 +71,46 @@ export default function App() {
   }, [isFilterOpen]);
 
   // Hook foto untuk Homepage Gallery
-  const { photos: galleryPhotos, loading: galleryLoading } = usePhotos({
+  const {
+    photos: galleryPhotos,
+    loading: galleryLoading,
+    loadingMore: galleryLoadingMore,
+    hasMore: galleryHasMore,
+    loadMore: galleryLoadMore,
+  } = usePhotos({
     query: debouncedSearch,
     categoryId: selectedCategory?.id || 'all',
     random: selectedCategory?.id === 'all' && !debouncedSearch,
   });
+
+  // Target sentinel untuk infinite scroll
+  const loadMoreRef = useRef(null);
+
+  useEffect(() => {
+    if (view !== 'homepage') return;
+
+    const currentTarget = loadMoreRef.current;
+    if (!currentTarget) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting && galleryHasMore && !galleryLoadingMore && !galleryLoading) {
+          galleryLoadMore();
+        }
+      },
+      {
+        rootMargin: '450px', // Fetch 450px sebelum mentok ke bawah untuk pengalaman mulus
+        threshold: 0.05,
+      }
+    );
+
+    observer.observe(currentTarget);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [view, galleryHasMore, galleryLoadingMore, galleryLoading, galleryLoadMore]);
 
   // Hook foto untuk Landing Page (selalu acak)
   const { photos: landingPhotos } = usePhotos({
@@ -299,28 +334,49 @@ export default function App() {
           </header>
 
           {/* Konten Galeri Full Screen */}
-          <main className="flex-1 w-full px-2.5 sm:px-5 md:px-6 lg:px-8 py-4 sm:py-6">
+          <main className="flex-1 w-full px-2.5 sm:px-5 md:px-6 lg:px-8 py-4 sm:py-6 flex flex-col">
             {galleryLoading && homepageImages.length === 0 ? (
-              <div className="py-32 text-center text-muted-foreground text-sm">
-                Memuat galeri foto...
+              <div className="py-32 flex flex-col items-center justify-center gap-3.5 text-muted-foreground text-sm">
+                <div className="w-8 h-8 border-2 border-foreground/30 border-t-foreground rounded-full animate-spin" />
+                <p>Memuat galeri foto...</p>
               </div>
             ) : homepageImages.length === 0 ? (
               <div className="py-32 text-center text-muted-foreground text-sm">
                 Tidak ada foto yang cocok dengan "{searchTerm}".
               </div>
             ) : (
-              <Gallery>
-                <GalleryGrid className="w-full">
-                  {homepageImages.map((image) => (
-                    <GalleryImage
-                      key={image.id}
-                      id={image.id}
-                      src={image.src}
-                      alt={image.alt}
-                    />
-                  ))}
-                </GalleryGrid>
-              </Gallery>
+              <>
+                <Gallery>
+                  <GalleryGrid className="w-full">
+                    {homepageImages.map((image) => (
+                      <GalleryImage
+                        key={image.id}
+                        id={image.id}
+                        src={image.src}
+                        alt={image.alt}
+                      />
+                    ))}
+                  </GalleryGrid>
+                </Gallery>
+
+                {/* Sentinel Infinite Scroll Target */}
+                <div
+                  ref={loadMoreRef}
+                  className="w-full py-8 flex flex-col items-center justify-center min-h-[90px]"
+                >
+                  {galleryLoadingMore && (
+                    <div className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-card/90 backdrop-blur-md border border-border shadow-md text-foreground text-xs sm:text-sm font-medium">
+                      <div className="w-4 h-4 border-2 border-foreground/40 border-t-foreground rounded-full animate-spin flex-shrink-0" />
+                      <span>Memuat lebih banyak gambar...</span>
+                    </div>
+                  )}
+                  {!galleryHasMore && homepageImages.length > 0 && (
+                    <div className="text-center py-6 text-xs text-muted-foreground/75 tracking-wider font-medium">
+                      ✨ Semua foto telah ditampilkan
+                    </div>
+                  )}
+                </div>
+              </>
             )}
           </main>
         </div>

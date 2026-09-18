@@ -190,6 +190,114 @@ export const CURATED_POOL = [
     urls: { regular: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1400&q=85" },
     alt_description: "Golden sunset over solitary tree in vast grassy meadow",
     tags: ["golden-hour", "minimalist", "landscape"]
+  },
+  {
+    id: "pool-33",
+    urls: { regular: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1400&q=85" },
+    alt_description: "Mount Fuji sunrise framed with soft morning mist",
+    tags: ["landscape", "mountain", "golden-hour"]
+  },
+  {
+    id: "pool-34",
+    urls: { regular: "https://images.unsplash.com/photo-1434725039720-aaad6dd32dfe?auto=format&fit=crop&w=1400&q=85" },
+    alt_description: "Dramatic green moss waterfall gorge in Iceland",
+    tags: ["landscape", "nordic", "nature"]
+  },
+  {
+    id: "pool-35",
+    urls: { regular: "https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&w=1400&q=85" },
+    alt_description: "Lofoten islands winter aurora green glow over sea",
+    tags: ["aurora", "night-sky", "nordic"]
+  },
+  {
+    id: "pool-36",
+    urls: { regular: "https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=1400&q=85" },
+    alt_description: "Aerial view of turquoise tropical coastline and coral reefs",
+    tags: ["ocean-coast", "panorama"]
+  },
+  {
+    id: "pool-37",
+    urls: { regular: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1400&q=85" },
+    alt_description: "Serene bamboo grove forest illuminated by soft daylight",
+    tags: ["misty-forest", "minimalist", "nature"]
+  },
+  {
+    id: "pool-38",
+    urls: { regular: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=1400&q=85" },
+    alt_description: "Swiss Alps snowy jagged peaks towering over green valley",
+    tags: ["nordic", "mountain", "landscape"]
+  },
+  {
+    id: "pool-39",
+    urls: { regular: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1400&q=85" },
+    alt_description: "Endless desert sand dunes rippling in warm sunset light",
+    tags: ["panorama", "golden-hour", "minimalist"]
+  },
+  {
+    id: "pool-40",
+    urls: { regular: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=85" },
+    alt_description: "Deep space nebula and cosmic stardust fantasy panorama",
+    tags: ["digital-art", "aurora", "night-sky"]
+  },
+  {
+    id: "pool-41",
+    urls: { regular: "https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?auto=format&fit=crop&w=1400&q=85" },
+    alt_description: "Pacific coastal highway with cliffs meeting ocean waves",
+    tags: ["ocean-coast", "panorama", "landscape"]
+  },
+  {
+    id: "pool-42",
+    urls: { regular: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1400&q=85" },
+    alt_description: "Banff Moraine Lake crystal turquoise waters with canoe",
+    tags: ["mountain", "lake", "nordic", "landscape"]
+  },
+  {
+    id: "pool-43",
+    urls: { regular: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1400&q=85" },
+    alt_description: "Golden autumn woodland morning with sunbeams piercing mist",
+    tags: ["misty-forest", "golden-hour", "landscape"]
+  },
+  {
+    id: "pool-44",
+    urls: { regular: "https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=1400&q=85" },
+    alt_description: "Moody black sand beach with jagged ocean rocks in Iceland",
+    tags: ["ocean-coast", "nordic", "minimalist"]
+  },
+  {
+    id: "pool-45",
+    urls: { regular: "https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=1400&q=85" },
+    alt_description: "Vibrant purple lavender field blooming toward horizon",
+    tags: ["golden-hour", "nature", "landscape"]
+  },
+  {
+    id: "pool-46",
+    urls: { regular: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1400&q=85" },
+    alt_description: "Futuristic glowing sci-fi perspective corridor and lighting",
+    tags: ["digital-art", "art"]
+  },
+  {
+    id: "pool-47",
+    urls: { regular: "https://images.unsplash.com/photo-1511497584788-87676104235f?auto=format&fit=crop&w=1400&q=85" },
+    alt_description: "Dense moody forest shrouded in mystical green ambient light",
+    tags: ["misty-forest", "digital-art", "nature"]
+  },
+  {
+    id: "pool-48",
+    urls: { regular: "https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?auto=format&fit=crop&w=1400&q=85" },
+    alt_description: "Breathtaking canyon layers glowing in warm twilight",
+    tags: ["panorama", "golden-hour", "landscape"]
+  },
+  {
+    id: "pool-49",
+    urls: { regular: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1400&q=85" },
+    alt_description: "Dolomites massive peaks under clearing storm clouds",
+    tags: ["mountain", "nordic", "landscape"]
+  },
+  {
+    id: "pool-50",
+    urls: { regular: "https://images.unsplash.com/photo-1498429089284-41f8cfc20c0d?auto=format&fit=crop&w=1400&q=85" },
+    alt_description: "Tranquil dock on misty alpine lake surrounded by autumn trees",
+    tags: ["minimalist", "misty-forest", "lake"]
   }
 ];
 

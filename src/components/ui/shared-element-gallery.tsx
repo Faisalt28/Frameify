@@ -145,10 +145,11 @@ export function GalleryImage({
  */
 function GalleryModal() {
   const context = React.useContext(GalleryContext)
+  const [copied, setCopied] = React.useState(false)
+
   if (!context) return null
 
   const { selectedImage, setSelectedImage } = context
-  const [copied, setCopied] = React.useState(false)
 
   // Download handler
   const handleDownload = async (e: React.MouseEvent) => {
