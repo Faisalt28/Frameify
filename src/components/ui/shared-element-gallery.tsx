@@ -16,7 +16,7 @@ interface GalleryContextType {
   setSelectedImage: (image: ImageData | null) => void
 }
 
-const GalleryContext = React.createContext<GalleryContextType | null>(null)
+export const GalleryContext = React.createContext<GalleryContextType | null>(null)
 
 // --- Physics ---
 const spring = {

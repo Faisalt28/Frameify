@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { ImageStreamHero } from './components/ui/image-stream-hero';
-import { Gallery, GalleryGrid, GalleryImage } from './components/ui/shared-element-gallery';
+import { Gallery } from './components/ui/shared-element-gallery';
+import { ImageGallery } from './components/ui/image-gallery';
 import { usePhotos } from './hooks/usePhotos';
 import { useDebounce } from './hooks/useDebounce';
 import { CATEGORIES } from './constants/categories';
@@ -131,6 +132,8 @@ export default function App() {
       id: String(p.id),
       src: p.urls?.regular || p.urls?.small,
       alt: p.alt_description || p.description || 'FRAMEIFY Photography',
+      width: p.width,
+      height: p.height,
     }));
   }, [galleryPhotos]);
 
@@ -347,16 +350,7 @@ export default function App() {
             ) : (
               <>
                 <Gallery>
-                  <GalleryGrid className="w-full">
-                    {homepageImages.map((image) => (
-                      <GalleryImage
-                        key={image.id}
-                        id={image.id}
-                        src={image.src}
-                        alt={image.alt}
-                      />
-                    ))}
-                  </GalleryGrid>
+                  <ImageGallery images={homepageImages} />
                 </Gallery>
 
                 {/* Sentinel Infinite Scroll Target */}
